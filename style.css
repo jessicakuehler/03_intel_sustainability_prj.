@@ -1,0 +1,153 @@
+/* Keep the page easy to read while the timeline stretches across the screen. */
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	color: #172033;
+	background-color: #f4f7fa;
+}
+
+header {
+	padding: 40px 20px;
+	background-color: #0071c5;
+	color: white;
+}
+
+header >div {
+	text-align: center;
+}
+
+header img {
+	width: 72px;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
+header h1 {
+	font-size: 46px;
+	margin: 20px 0 12px;
+}
+
+header p {
+	font-size: 21px;
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+.timeline {
+	display: flex;
+	gap: 24px;
+	position: relative;
+	padding: 70px 40px 30px;
+	overflow-x: auto;
+}
+
+/* This line connects the timeline points behind the cards. */
+.timeline::before {
+	content: "";
+	position: absolute;
+	top: 38px;
+	left: 40px;
+	right: 40px;
+	height: 4px;
+	background-color: #00a3e0;
+}
+
+.timeline > div {
+	position: relative;
+	flex: 0 0 250px;
+	padding: 28px 22px 22px;
+	background-color: white;
+	border-top: 6px solid #00a3e0;
+	box-shadow: 0 4px 12px rgba(23, 32, 51, 0.12);
+	overflow: hidden;
+}
+
+.timeline > div::before {
+	content: "";
+	position: absolute;
+	top: -44px;
+	left: 22px;
+	width: 18px;
+	height: 18px;
+	border: 4px solid #0071c5;
+	border-radius: 50%;
+	background-color: white;
+}
+
+.timeline h2 {
+	margin: 0 0 12px;
+	color: #0071c5;
+	font-size: 28px;
+}
+
+.timeline h3 {
+	margin: 0 0 12px;
+	font-size: 20px;
+}
+
+.timeline img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin-bottom: 12px;
+}
+
+.timeline p {
+	position: absolute;
+	inset: 0;
+	margin: 0;
+	padding: 26px 22px 20px;
+	line-height: 1.6;
+	background: rgba(17, 24, 39, 0.6);
+	color: #ffffff;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.25s ease, visibility 0.25s ease;
+	box-sizing: border-box;
+	z-index: 2;
+	display: flex;
+	align-items: flex-end;
+}
+
+.timeline > div:hover p,
+.timeline > div:focus-within p {
+	opacity: 1;
+	visibility: visible;
+}
+
+body > p {
+	padding: 0 20px 30px;
+	text-align: center;
+}
+
+@media (max-width: 600px) {
+	.timeline {
+		display: block;
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-top: 30px;
+	}
+
+	.timeline::before {
+		left: 30px;
+		top: 0;
+		bottom: 0;
+		right: auto;
+		width: 4px;
+		height: auto;
+	}
+
+	.timeline > div {
+		flex: none;
+		width: 100%;
+		box-sizing: border-box;
+		margin-bottom: 28px;
+		padding-left: 36px;
+	}
+
+	.timeline > div::before {
+		left: 16px;
+		top: 22px;
+	}
+}
